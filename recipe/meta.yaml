@@ -1,5 +1,5 @@
 {% set name = "caf.space" %}
-{% set version = "1.0.2" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/caf.space-{{ version }}.tar.gz
-  sha256: 0ac36760c99fd6e781158d0300688227828078fb27ab81c5b52cadca8bc9591c
+  sha256: ada45f4555eabc055d9d89d91723bb7fecaffa04ca4d4ed749e7b5944977d330
 
 build:
   noarch: python
