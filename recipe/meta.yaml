@@ -1,34 +1,36 @@
 {% set name = "caf.space" %}
-{% set version = "1.0.2" %}
+{% set version = "1.5.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/caf.space-{{ version }}.tar.gz
-  sha256: 0ac36760c99fd6e781158d0300688227828078fb27ab81c5b52cadca8bc9591c
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/caf_space-{{ version }}.tar.gz
+  sha256: 4e5ffcf79e1ee31dcb9916407fcee104c10acb4986c4e7694021ec8e06f20712
 
 build:
+  entry_points:
+    - caf.space = caf.space.__main__:main
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - python >=3.9
-    - setuptools_scm
-    - versioneer-518
+    - setuptools >=64.0.0
+    - versioningit
     - pip
   run:
     - python >=3.9
-    - caf.toolkit >=0.0.7
-    - geopandas >=0.9
+    - caf.toolkit >=0.2.1
+    - geopandas >=1
     - fiona >=1.8
     - shapely >=1.8
     - numpy >=1.21
     - pandas >=1.3
-    - pydantic >=1.10.2
+    - pydantic >=2.0.0
     - openpyxl >=3.0
 
 test:
@@ -36,18 +38,19 @@ test:
     - caf.space
   commands:
     - pip check
+    - caf.space --help
   requires:
     - pip
 
 about:
   home: https://github.com/Transport-for-the-North/caf.space
-  summary: Easily generate translations between transport zoning systems
+  summary: Easily generate translations between zoning systems
   dev_url: https://github.com/Transport-for-the-North/caf.space
-  license: GPL-3.0-only
+  license: LicenseRef-TfN-License
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
+    - isaac-tfn
     - MattBuckley-TfN
     - BenTaylor-TfN
-    - isaac-tfn
