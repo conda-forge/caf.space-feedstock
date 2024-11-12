@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/caf_space-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/caf_space-{{ version }}.tar.gz
   sha256: 03153ce89a75daf70effb812196bc62af0f6041b837728cb2a196b2c91324f71
 
 build:
@@ -18,7 +18,7 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python 3.9
     - setuptools >=64.0.0
     - versioningit
     - pip
@@ -40,6 +40,7 @@ test:
     - pip check
     - caf.space --help
   requires:
+    - python 3.9
     - pip
 
 about:
