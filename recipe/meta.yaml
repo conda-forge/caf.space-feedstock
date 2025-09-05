@@ -1,5 +1,5 @@
 {% set name = "caf.space" %}
-{% set version = "1.6.0" %}
+{% set version = "1.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/caf_space-{{ version }}.tar.gz
-  sha256: 03153ce89a75daf70effb812196bc62af0f6041b837728cb2a196b2c91324f71
+  sha256: f2c2342222bf91914908ca76f54c68367432682234abd875ff4dafe3d50d5f23
 
 build:
   entry_points:
     - caf.space = caf.space.__main__:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
